@@ -8,6 +8,7 @@
 #import "LocationModel.h"
 #import "PictureModel.h"
 
+
 @protocol UserModel @end
 @interface UserModel : JSONModel
 

@@ -5,6 +5,6 @@
 
 #import "LocationModel.h"
 
-@implementation LocationModel : JSONModel
+@implementation LocationModel
 
 @end

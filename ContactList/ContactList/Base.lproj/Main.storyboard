@@ -20,11 +20,31 @@
                     <navigationItem key="navigationItem" id="adJ-qW-v9g"/>
                     <connections>
                         <segue destination="bI1-xi-x6s" kind="show" identifier="MainToDetailSegue" id="iC9-6Y-YAm"/>
+                        <segue destination="ocb-fs-77n" kind="presentation" identifier="MainToAddSegue" id="USM-GI-f2x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="473" y="324"/>
+        </scene>
+        <!--Add Contact View Controller-->
+        <scene sceneID="AOv-XM-rnd">
+            <objects>
+                <viewController id="04R-2s-3lq" customClass="AddContactViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="syQ-fd-Xm4"/>
+                        <viewControllerLayoutGuide type="bottom" id="1Qj-BQ-QW1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NLw-rg-lxF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JpN-QM-IZW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kIx-Da-ctU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1285" y="1065"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="qL5-Ks-rqk">
@@ -37,14 +57,6 @@
                     <view key="view" contentMode="scaleToFill" id="otQ-3D-TZ9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DetailViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTA-KP-HTW">
-                                <rect key="frame" x="270" y="277" width="61" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
@@ -69,6 +81,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xZP-lP-jbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-206" y="324"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="RRi-uo-Jho">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ocb-fs-77n" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fsY-hm-M5F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="04R-2s-3lq" kind="relationship" relationship="rootViewController" id="gTS-5L-Dpi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kXK-E6-Ufb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="473" y="1065"/>
         </scene>
     </scenes>
 </document>

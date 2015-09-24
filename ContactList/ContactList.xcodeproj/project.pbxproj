@@ -24,7 +24,7 @@
 		DC18FE721BB2B3B200D72952 /* PictureModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC18FE711BB2B3B200D72952 /* PictureModel.m */; settings = {ASSET_TAGS = (); }; };
 		DC18FE761BB35AAA00D72952 /* ResultsContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = DC18FE751BB35AAA00D72952 /* ResultsContainer.m */; settings = {ASSET_TAGS = (); }; };
 		DC18FE831BB3736700D72952 /* ResultModel.m in Sources */ = {isa = PBXBuildFile; fileRef = DC18FE821BB3736700D72952 /* ResultModel.m */; settings = {ASSET_TAGS = (); }; };
-		DC18FE871BB3810100D72952 /* 111-user.png in Resources */ = {isa = PBXBuildFile; fileRef = DC18FE861BB3810100D72952 /* 111-user.png */; settings = {ASSET_TAGS = (); }; };
+		DC18FE8B1BB3C9AD00D72952 /* AddContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC18FE8A1BB3C9AD00D72952 /* AddContactViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +60,8 @@
 		DC18FE751BB35AAA00D72952 /* ResultsContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsContainer.m; sourceTree = "<group>"; };
 		DC18FE811BB3736700D72952 /* ResultModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultModel.h; sourceTree = "<group>"; };
 		DC18FE821BB3736700D72952 /* ResultModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultModel.m; sourceTree = "<group>"; };
-		DC18FE861BB3810100D72952 /* 111-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "111-user.png"; sourceTree = "<group>"; };
+		DC18FE891BB3C9AD00D72952 /* AddContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddContactViewController.h; sourceTree = "<group>"; };
+		DC18FE8A1BB3C9AD00D72952 /* AddContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddContactViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +87,6 @@
 		DC18FE351BB29EBE00D72952 = {
 			isa = PBXGroup;
 			children = (
-				DC18FE881BB3810800D72952 /* Assets */,
 				DC18FE401BB29EBE00D72952 /* ContactList */,
 				DC18FE3F1BB29EBE00D72952 /* Products */,
 				ECC2EE25D9D12BD377986B0F /* Pods */,
@@ -165,17 +165,10 @@
 				DC18FE5C1BB29FDD00D72952 /* MainViewController.m */,
 				DC18FE641BB2ADB100D72952 /* DetailViewController.h */,
 				DC18FE651BB2ADB100D72952 /* DetailViewController.m */,
+				DC18FE891BB3C9AD00D72952 /* AddContactViewController.h */,
+				DC18FE8A1BB3C9AD00D72952 /* AddContactViewController.m */,
 			);
 			name = Controllers;
-			sourceTree = "<group>";
-		};
-		DC18FE881BB3810800D72952 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				DC18FE861BB3810100D72952 /* 111-user.png */,
-			);
-			name = Assets;
-			path = ContactList;
 			sourceTree = "<group>";
 		};
 		ECC2EE25D9D12BD377986B0F /* Pods */ = {
@@ -248,7 +241,6 @@
 			files = (
 				DC18FE541BB29EBE00D72952 /* LaunchScreen.storyboard in Resources */,
 				DC18FE511BB29EBE00D72952 /* Assets.xcassets in Resources */,
-				DC18FE871BB3810100D72952 /* 111-user.png in Resources */,
 				DC18FE4C1BB29EBE00D72952 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +292,7 @@
 				DC18FE491BB29EBE00D72952 /* ViewController.m in Sources */,
 				DC18FE461BB29EBE00D72952 /* AppDelegate.m in Sources */,
 				DC18FE6F1BB2B22300D72952 /* LocationModel.m in Sources */,
+				DC18FE8B1BB3C9AD00D72952 /* AddContactViewController.m in Sources */,
 				DC18FE661BB2ADB100D72952 /* DetailViewController.m in Sources */,
 				DC18FE5D1BB29FDD00D72952 /* MainViewController.m in Sources */,
 				DC18FE631BB2A1AD00D72952 /* ItemCell.m in Sources */,

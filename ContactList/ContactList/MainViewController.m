@@ -7,6 +7,8 @@
 #define kUserUrl @"https://randomuser.me/api/"
 #define kJsonUrl @"http://api.randomuser.me/?results=200&key=MQ8Y-96ZR-Q1AM-DWJB" //2
 #define kAppTitle @"Contact List"
+#define kMainToDetailSegue @"MainToDetailSegue"
+#define kMainToAddSegue @"MainToAddSegue"
 
 #import "MainViewController.h"
 #import "JSONModelLib.h"
@@ -16,6 +18,7 @@
 #import "ResultsContainer.h"
 #import "UIImageView+WebCache.h"
 #import "DetailViewController.h"
+
 
 @interface MainViewController () {
     ResultsContainer *_resultsContainer;
@@ -48,6 +51,10 @@
     [self.tableView registerClass:[ItemCell class] forCellReuseIdentifier:@"Cell"];
     self.view = self.tableView;
     self.navigationItem.title = kAppTitle;
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonTapped:)];
+
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     _resultsContainer = [[ResultsContainer alloc] initFromURLWithString:kJsonUrl completion:^(JSONModel *model, JSONModelError *err) {
@@ -58,12 +65,21 @@
         
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         
+        NSData *resultsData = [NSKeyedArchiver archivedDataWithRootObject:self.results];
+        [[NSUserDefaults standardUserDefaults] setObject:resultsData forKey:@"ContactListData"];
+        
         [self.tableView reloadData];
     }];
     
 
 }
 
+-(void)addButtonTapped:(UIBarButtonItem *)sender{
+    
+    //perform your action
+    [self performSegueWithIdentifier:kMainToAddSegue sender:self];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -123,7 +139,7 @@
     
     itemCell.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
     
-    UIImage *defaultImage = [UIImage imageNamed:@"111-user.png"];
+    UIImage *defaultImage = [UIImage imageNamed:@"user"];
     NSURL *imageUrl = [NSURL URLWithString:[user.picture.thumbnail stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
     
@@ -139,7 +155,14 @@
 {
     NSLog(@"selected %ld row", (long)indexPath.row);
     self.selectedIndex = indexPath.row;
-    [self performSegueWithIdentifier:@"MainToDetailSegue" sender:self];
+    ResultModel *selectedResultModel = self.results[indexPath.row];
+    
+    UserModel *selectedUser = selectedResultModel.user;
+    
+    self.selectedFirstName = selectedUser.name.first;
+    self.selectedLastName = selectedUser.name.last;
+    self.selectedPictureLarge = selectedUser.picture.large;
+    [self performSegueWithIdentifier:kMainToDetailSegue sender:self];
 }
 
 - (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
@@ -157,6 +180,9 @@
         NSIndexPath *indexPath = (NSIndexPath *)sender;
         DetailViewController *destViewController = segue.destinationViewController;
         destViewController.selectedIndex = self.selectedIndex;
+        destViewController.selectedFirstName = self.selectedFirstName;
+        destViewController.selectedLastName = self.selectedLastName;
+        destViewController.selectedPictureLarge = self.selectedPictureLarge;
     }
 }
 

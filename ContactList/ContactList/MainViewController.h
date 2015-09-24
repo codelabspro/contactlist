@@ -11,4 +11,8 @@
 @property (nonatomic, strong) NSArray<ResultModel> *results;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) long selectedIndex;
+@property (nonatomic, assign) NSString *selectedFirstName;
+@property (nonatomic, assign) NSString *selectedLastName;
+@property (nonatomic, assign) NSString *selectedPictureLarge;
+
 @end

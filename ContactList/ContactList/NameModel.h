@@ -5,6 +5,7 @@
 
 #import "JSONModel.h"
 
+
 @interface NameModel : JSONModel
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *first;
