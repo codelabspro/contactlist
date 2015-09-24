@@ -7,4 +7,6 @@
 
 @interface DetailViewController : UIViewController
 
+@property (nonatomic, assign) long selectedIndex;
+
 @end

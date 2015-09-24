@@ -6,7 +6,7 @@
 #define kBackgroundQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
 #define kUserUrl @"https://randomuser.me/api/"
 #define kJsonUrl @"http://api.randomuser.me/?results=200&key=MQ8Y-96ZR-Q1AM-DWJB" //2
-#define kKivaUrl @"http://api.kivaws.org/v1/loans/search.json?status=fundraising"
+#define kAppTitle @"Contact List"
 
 #import "MainViewController.h"
 #import "JSONModelLib.h"
@@ -15,6 +15,7 @@
 #import "MBProgressHUD.h"
 #import "ResultsContainer.h"
 #import "UIImageView+WebCache.h"
+#import "DetailViewController.h"
 
 @interface MainViewController () {
     ResultsContainer *_resultsContainer;
@@ -26,28 +27,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    NSLog(@"viewDidLoad was called");
     
     [self loadView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    NSLog(@"viewDidAppear was called");
     
-    _resultsContainer = [[ResultsContainer alloc] initFromURLWithString:kJsonUrl completion:^(JSONModel *model, JSONModelError *err) {
-
-        
-        self.results = _resultsContainer.results;
-        
-        
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        
-        [self.tableView reloadData];
-    }];
-    
-    
-
 }
 
 - (void)loadView
@@ -58,11 +46,21 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:[ItemCell class] forCellReuseIdentifier:@"Cell"];
-    // [self.tableView reloadData];
-    
     self.view = self.tableView;
+    self.navigationItem.title = kAppTitle;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
-
+    _resultsContainer = [[ResultsContainer alloc] initFromURLWithString:kJsonUrl completion:^(JSONModel *model, JSONModelError *err) {
+        
+        
+        self.results = _resultsContainer.results;
+        
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        [self.tableView reloadData];
+    }];
+    
 
 }
 
@@ -92,18 +90,12 @@
     return 1;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    return 55.0;
-    
-}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
       NSLog(@"users count: %ld ", [self.results count]);
     // Return the number of rows in the section.
     return [self.results count];
-    // return _feed.loans.count;
   
 }
 
@@ -131,7 +123,6 @@
     
     itemCell.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
     
-    // [itemCell.iconImageView setImageWithURL:user.picture.thumbnail placeholderImage:nil];
     UIImage *defaultImage = [UIImage imageNamed:@"111-user.png"];
     NSURL *imageUrl = [NSURL URLWithString:[user.picture.thumbnail stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
@@ -147,6 +138,26 @@
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"selected %ld row", (long)indexPath.row);
+    self.selectedIndex = indexPath.row;
+    [self performSegueWithIdentifier:@"MainToDetailSegue" sender:self];
+}
+
+- (void)performSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    if ([self shouldPerformSegueWithIdentifier:identifier sender:sender]) {
+        [super performSegueWithIdentifier:identifier sender:sender];
+    }
+    // otherwise do nothing
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"MainToDetailSegue"])
+    {
+        NSIndexPath *indexPath = (NSIndexPath *)sender;
+        DetailViewController *destViewController = segue.destinationViewController;
+        destViewController.selectedIndex = self.selectedIndex;
+    }
 }
 
 @end

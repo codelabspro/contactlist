@@ -19,7 +19,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="adJ-qW-v9g"/>
                     <connections>
-                        <segue destination="bI1-xi-x6s" kind="show" id="P0K-hF-nv8"/>
+                        <segue destination="bI1-xi-x6s" kind="show" identifier="MainToDetailSegue" id="iC9-6Y-YAm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
